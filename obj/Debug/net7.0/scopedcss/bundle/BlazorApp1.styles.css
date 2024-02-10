@@ -1,0 +1,14 @@
+/* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
+.page[b-45rkf8v3vv] {
+    flex-direction: column;
+    font-family: Roboto;
+}
+
+.topbar[b-45rkf8v3vv] {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    position: sticky;
+    top: 0;
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}

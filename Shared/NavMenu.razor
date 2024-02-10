@@ -1,0 +1,64 @@
+﻿@using BlazorApp1.CustomDatas
+
+@for (int i = 0; i < _infos.Length; i++) {
+    int index = i;
+
+    <div class="tab">
+        <button class="btn btn-topbar" @onclick="Clicked">
+            <NavLink class="nav-link" href=@_infos[index].id Match="NavLinkMatch.All">
+                @_infos[index].name
+            </NavLink>
+        </button>
+    </div>
+}
+
+
+@code {
+    #region Variables
+    private PageInfos[] _infos;
+    private Color color = Color.Red;
+    #endregion
+
+    protected override Task OnInitializedAsync() {
+        _infos = new PageInfos[] {
+            new PageInfos("", "Home", "oi oi-home"),
+            new PageInfos("Counter", "Counter", "oi oi-plus"),
+            new PageInfos("FetchData", "Weather", "oi oi-list-rich"),
+            new PageInfos("Calculator", "Calculator", "oi oi-calculator")
+    };
+
+        return base.OnInitializedAsync();
+    }
+
+    public void Clicked() {
+        color = Color.Blue;
+    }
+}
+
+<style>
+    .nav-link{
+        color:white;
+        flex: 1;
+        font-size: 1.5rem;
+        text-align: center;
+
+        margin-top:auto;
+        margin-bottom:auto;
+    }
+
+    .btn-topbar{
+        flex:auto;
+        color:transparent;
+        background-color:transparent;
+        outline-color:transparent;
+    }
+
+    .btn-topbar:is(:hover){
+        background-color:white;
+    }
+
+    .tab{
+        flex:auto;
+        background-color:red;
+    }
+</style>

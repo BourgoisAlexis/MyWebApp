@@ -1,0 +1,89 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Black.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Black.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-BlackItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-BlackItalic.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Bold.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-BoldItalic.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Italic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Italic.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Light.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Light.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-LightItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-LightItalic.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Medium.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Medium.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-MediumItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-MediumItalic.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Regular.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-Thin.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-Thin.ttf"
+    },
+    {
+      "Id": "D:\\BlazorApp1\\wwwroot\\fonts\\roboto\\Roboto-ThinItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-ThinItalic.ttf"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BlazorApp1.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BlazorApp1.props",
+      "PackagePath": "build\\BlazorApp1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorApp1.props",
+      "PackagePath": "buildMultiTargeting\\BlazorApp1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BlazorApp1.props",
+      "PackagePath": "buildTransitive\\BlazorApp1.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
