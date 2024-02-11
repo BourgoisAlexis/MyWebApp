@@ -2,12 +2,12 @@
     public struct PageInfos {
         public string id;
         public string name;
-        public string buttonId;
+        public string icon;
 
-        public PageInfos(string id, string name, string buttonId) {
+        public PageInfos(string id, string name, string icon) {
             this.id = id;
             this.name = name;
-            this.buttonId = buttonId;
+            this.icon = icon;
         }
     }
 }

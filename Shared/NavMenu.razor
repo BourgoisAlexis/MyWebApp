@@ -1,64 +1,36 @@
 ﻿@using BlazorApp1.CustomDatas
+@using BlazorBootstrap;
 
-@for (int i = 0; i < _infos.Length; i++) {
-    int index = i;
+<nav class="navbar navbar-expand-lg h-100 w-100 navbar-dark bg-transparent align-content-center">
+    <ul class="navbar-nav nav-fill w-100">
+        @for (int i = 0; i < _infos.Length; i++) {
+            int index = i;
+            <li class="nav-item">
+                <NavLink class="nav-link" href="@_infos[index].id" Match="NavLinkMatch.All">
+                    <i class=@_infos[index].icon style="font-size:inherit; color:inherit"></i>
+                    @_infos[index].name
+                </NavLink>
+            </li>
+        }
+    </ul>
+</nav>
 
-    <div class="tab">
-        <button class="btn btn-topbar" @onclick="Clicked">
-            <NavLink class="nav-link" href=@_infos[index].id Match="NavLinkMatch.All">
-                @_infos[index].name
-            </NavLink>
-        </button>
-    </div>
-}
 
 
 @code {
     #region Variables
-    private PageInfos[] _infos;
-    private Color color = Color.Red;
+    private string _appName = "MyApp";
+    private PageInfos[] _infos = new PageInfos[] { };
     #endregion
 
     protected override Task OnInitializedAsync() {
         _infos = new PageInfos[] {
-            new PageInfos("", "Home", "oi oi-home"),
-            new PageInfos("Counter", "Counter", "oi oi-plus"),
-            new PageInfos("FetchData", "Weather", "oi oi-list-rich"),
-            new PageInfos("Calculator", "Calculator", "oi oi-calculator")
-    };
+            new PageInfos("", "Home", "bi-house"),
+            new PageInfos("Counter", "Counter", "bi-plus"),
+            new PageInfos("FetchData", "Weather", "bi-cloud"),
+            new PageInfos("Calculator", "Calculator", "bi-calculator")
+        };
 
         return base.OnInitializedAsync();
     }
-
-    public void Clicked() {
-        color = Color.Blue;
-    }
 }
-
-<style>
-    .nav-link{
-        color:white;
-        flex: 1;
-        font-size: 1.5rem;
-        text-align: center;
-
-        margin-top:auto;
-        margin-bottom:auto;
-    }
-
-    .btn-topbar{
-        flex:auto;
-        color:transparent;
-        background-color:transparent;
-        outline-color:transparent;
-    }
-
-    .btn-topbar:is(:hover){
-        background-color:white;
-    }
-
-    .tab{
-        flex:auto;
-        background-color:red;
-    }
-</style>
