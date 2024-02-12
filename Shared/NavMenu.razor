@@ -6,7 +6,7 @@
         @for (int i = 0; i < _infos.Length; i++) {
             int index = i;
             <li class="nav-item">
-                <NavLink class="nav-link" href="@_infos[index].id" Match="NavLinkMatch.All">
+                <NavLink class="nav-link" style="font-size:1.5em" href="@_infos[index].id" Match="NavLinkMatch.All">
                     <i class=@_infos[index].icon style="font-size:inherit; color:inherit"></i>
                     @_infos[index].name
                 </NavLink>
@@ -34,3 +34,16 @@
         return base.OnInitializedAsync();
     }
 }
+
+<style>
+    .navbar-nav .nav-item:focus .nav-link,
+    .navbar-nav .nav-item:hover .nav-link{
+        color: @ApplicationConstants.neutralLight;
+    }
+    .navbar-nav .nav-item .nav-link.active{
+        color: @ApplicationConstants.neutralLight;
+        font-weight: bold;
+        transition-duration:300ms;
+        transition-property:font-weight, color;
+    }
+</style>

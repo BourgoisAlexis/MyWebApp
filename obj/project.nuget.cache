@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dkGL6dO+L1uYno65ioMUgaalPqsj9zmwqM/562TZEeEHyBoWL+ZnJqJI0l43XpCxED532I2yBIUfxS2CwWTf+Q==",
+  "dgSpecHash": "cW4mvxsjWsIcg4icK7Bl4S9nKdW0ala+wO6iu5HiU0ekRo40bOgTLc5CqtP5PvQjdQdXbxwYwTHPGIqdvJ5r+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bourg\\Desktop\\MyWebApp\\BlazorApp1.csproj",
+  "projectFilePath": "C:\\Users\\bourg\\Documents\\GitHub\\MyWebApp\\BlazorApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bourg\\.nuget\\packages\\blazor.bootstrap\\1.11.1\\blazor.bootstrap.1.11.1.nupkg.sha512",
     "C:\\Users\\bourg\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.26\\microsoft.aspnetcore.authorization.6.0.26.nupkg.sha512",

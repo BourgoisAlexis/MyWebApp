@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazorApp1.CustomDatas;
+@inherits LayoutComponentBase
 
 <PageTitle>MyApp</PageTitle>
 
@@ -6,7 +7,7 @@
     <div class="topbar w-100 sticky-top">
         <NavMenu />
     </div>
-    <div>
+    <div class="m-3">
         @Body
     </div>
 </div>
@@ -18,6 +19,6 @@
 
     .topbar {
         height: 5rem;
-        background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+        background-image: linear-gradient(90deg, @ApplicationConstants.palette[0] 0%, @ApplicationConstants.palette[1] 50%);
     }
 </style>
