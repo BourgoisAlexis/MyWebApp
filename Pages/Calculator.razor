@@ -1,4 +1,5 @@
 ﻿@using BlazorBootstrap;
+@using BlazorApp1.CustomDatas;
 @page "/calculator"
 
 <PageTitle>Calculator</PageTitle>
@@ -11,17 +12,17 @@
                 int colIndex = x;
                 string input = _buttonInputs[rowIndex][colIndex];
 
-                <Button class="btn btn-outline-dark m-2" @onclick="() => Clicked(input)">@input</Button>
+                <Button class="btn btn-outline-light m-2" @onclick="() => Clicked(input)">@input</Button>
             }
         </div>
     }
 </div>
 
-<p>
+<p style="color:@ApplicationConstants.light">
     current calculation > @_currentInput
 </p>
 
-<p>
+<p style="color:@ApplicationConstants.light">
     result > @_result
 </p>
 

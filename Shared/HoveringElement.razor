@@ -1,0 +1,58 @@
+﻿@using BlazorApp1.CustomDatas;
+
+<div class="hovering-element m-2">
+    <div class="hovering-element-frame" style="color:inherit">
+        <span>
+            @Content
+            @Content
+            @Content
+        </span>
+    </div>
+    <p style="color:@ApplicationConstants.light">
+        @Content
+    </p>
+</div>
+
+
+@code {
+    [Parameter] public string Content { get; set; }
+}
+
+<style>
+    .hovering-element {
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+        .hovering-element-frame{
+            width: 10em;
+            height: 10em;
+            border: solid;
+            border-color: @ApplicationConstants.lightColor;
+            border-radius: 25% 10%;
+        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+            .hovering-element-frame span {
+                color: transparent;
+            }
+
+        .hovering-element-frame:hover{
+            border-color: @ApplicationConstants.light;
+            transition-duration: @(ApplicationConstants.duration);
+            transition-property: border-color;
+        }
+
+            .hovering-element-frame:hover span {
+                color: @ApplicationConstants.light;
+                transition-duration: @(ApplicationConstants.duration);
+                transition-property: color;
+            }
+</style>
