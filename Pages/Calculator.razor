@@ -1,7 +1,49 @@
-﻿@page "/calculator"
+﻿@using BlazorBootstrap;
+@page "/calculator"
 
 <PageTitle>Calculator</PageTitle>
 
-@code {
+<div class="container w-50">
+    @for (int y = 0; y < _buttonInputs.Count; y++) {
+        int rowIndex = y;
+        <div class="d-flex justify-content-center">
+            @for (int x = 0; x < _buttonInputs[rowIndex].Count; x++) {
+                int colIndex = x;
+                string input = _buttonInputs[rowIndex][colIndex];
 
+                <Button class="btn btn-outline-dark m-2" @onclick="() => Clicked(input)">@input</Button>
+            }
+        </div>
+    }
+</div>
+
+<p>
+    current calculation > @_currentInput
+</p>
+
+<p>
+    result > @_result
+</p>
+
+@code {
+    List<List<string>> _buttonInputs = new List<List<string>> {
+        new List<string> { "7", "8", "9", "/" },
+        new List<string> { "4", "5", "6", "*" },
+        new List<string> { "1", "2", "3", "-" },
+        new List<string> { "0", ".", "=", "+" }
+    };
+
+    private string _currentInput = "";
+    private string _result = "0";
+
+    private void Clicked(string input) {
+        _currentInput += input;
+    }
 }
+
+<style>
+    .d-flex .btn{
+        width:3em;
+        height:3em;
+    }
+</style>
