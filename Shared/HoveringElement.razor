@@ -1,8 +1,9 @@
 ﻿@using BlazorApp1.CustomDatas;
 
-<div class="hovering-element m-2">
-    <div class="hovering-element-frame" style="color:inherit">
-        <span>
+<div class="main-container m-2">
+    <div class="frame">
+        <div class="stacked bg-img" style="background-image:url('/versus-punch.png')"></div>
+        <span class="stacked">
             @Content
             @Content
             @Content
@@ -19,40 +20,60 @@
 }
 
 <style>
-    .hovering-element {
-        display: flex;
+    .main-container {
+        display:flex;
         flex-direction:column;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
 
-        .hovering-element-frame{
-            width: 10em;
-            height: 10em;
-            border: solid;
-            border-color: @ApplicationConstants.lightColor;
-            border-radius: 25% 10%;
-        
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+    .frame{
+        display:grid;
+
+        width: 10em;
+        height: 10em;
+
+        border: solid;
+        border-color: @ApplicationConstants.lightColor;
+        border-radius: 1em;
+
+        overflow: hidden;
+    }
+
+        .frame span {
+            color: transparent;
         }
 
-            .hovering-element-frame span {
-                color: transparent;
-            }
+    .frame:hover{
+        border-color: @ApplicationConstants.light;
 
-        .hovering-element-frame:hover{
-            border-color: @ApplicationConstants.light;
+        transition-duration: @(ApplicationConstants.duration);
+        transition-property: border-color, width;
+    }
+
+        .frame:hover span {
+            color: @ApplicationConstants.light;
+
             transition-duration: @(ApplicationConstants.duration);
-            transition-property: border-color;
+            transition-property: color;
         }
 
-            .hovering-element-frame:hover span {
-                color: @ApplicationConstants.light;
-                transition-duration: @(ApplicationConstants.duration);
-                transition-property: color;
-            }
+        .frame:hover .bg-img {
+            filter:blur(5px);
+            z-index:0;
+
+            transition-duration: @(ApplicationConstants.duration);
+            transition-property: filter;
+        }
+
+    .stacked{
+        grid-area: 1 / 1;
+        z-index:10;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 </style>

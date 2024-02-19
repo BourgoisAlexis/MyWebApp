@@ -590,19 +590,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bourg\\.nuget\\packages\\": {}
+    "C:\\Users\\bourg\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bourg\\Documents\\GitHub\\MyWebApp\\BlazorApp1.csproj",
+      "projectUniqueName": "C:\\Users\\bourg\\Desktop\\MyWebApp\\BlazorApp1.csproj",
       "projectName": "BlazorApp1",
-      "projectPath": "C:\\Users\\bourg\\Documents\\GitHub\\MyWebApp\\BlazorApp1.csproj",
+      "projectPath": "C:\\Users\\bourg\\Desktop\\MyWebApp\\BlazorApp1.csproj",
       "packagesPath": "C:\\Users\\bourg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bourg\\Documents\\GitHub\\MyWebApp\\obj\\",
+      "outputPath": "C:\\Users\\bourg\\Desktop\\MyWebApp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\bourg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
