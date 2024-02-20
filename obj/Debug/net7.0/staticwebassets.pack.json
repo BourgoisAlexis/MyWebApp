@@ -5101,6 +5101,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\femora.png",
+      "PackagePath": "staticwebassets\\femora.png"
+    },
+    {
       "Id": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\fonts\\roboto\\LICENSE.txt",
       "PackagePath": "staticwebassets\\fonts\\roboto\\LICENSE.txt"
     },
@@ -5151,6 +5155,10 @@
     {
       "Id": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\fonts\\roboto\\Roboto-ThinItalic.ttf",
       "PackagePath": "staticwebassets\\fonts\\roboto\\Roboto-ThinItalic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\katra-ball.png",
+      "PackagePath": "staticwebassets\\katra-ball.png"
     },
     {
       "Id": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\versus-punch.png",

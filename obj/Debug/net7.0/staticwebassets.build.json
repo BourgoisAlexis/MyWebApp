@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K0PFhG2L+NzZj2/rAfs8mqj6IrULul1wcpsE6U0+tNk=",
+  "Hash": "lizeq30EcRBlFBvdYumaa+JPBuX40EvYUebFj9NIvFw=",
   "Source": "BlazorApp1",
   "BasePath": "_content/BlazorApp1",
   "Mode": "Default",
@@ -24394,6 +24394,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
+      "Identity": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\femora.png",
+      "SourceId": "BlazorApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/BlazorApp1",
+      "RelativePath": "femora.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\femora.png"
+    },
+    {
       "Identity": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\fonts\\roboto\\LICENSE.txt",
       "SourceId": "BlazorApp1",
       "SourceType": "Discovered",
@@ -24639,6 +24658,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\fonts\\roboto\\Roboto-ThinItalic.ttf"
+    },
+    {
+      "Identity": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\katra-ball.png",
+      "SourceId": "BlazorApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/BlazorApp1",
+      "RelativePath": "katra-ball.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\katra-ball.png"
     },
     {
       "Identity": "C:\\Users\\bourg\\Desktop\\MyWebApp\\wwwroot\\versus-punch.png",

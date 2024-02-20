@@ -1,0 +1,62 @@
+﻿@using BlazorApp1.CustomDatas;
+@page "/folio"
+
+<PageTitle>Folio</PageTitle>
+
+<h1 class="mt-2 mb-3" style="text-align:center">
+    Folio
+</h1>
+
+<div>
+    <h2 class="mt-2 mb-3" style="text-align:center">
+        @AppConst.placeHolder
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        @for (int i = 0; i < _infos.Length; i++) {
+            ElementInfos infos = _infos[i];
+            <HoveringElement Content=@infos.content Title="@infos.title" BackgroundPath=@infos.background></HoveringElement>
+        }
+    </div>
+</div>
+
+<div>
+    <h2 class="mt-2 mb-3" style="text-align:center">
+        @AppConst.placeHolder
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        @for (int i = 0; i < _infos.Length; i++) {
+            ElementInfos infos = _infos[i];
+            <HoveringElement Content=@infos.content Title="@infos.title" BackgroundPath=@infos.background></HoveringElement>
+        }
+    </div>
+</div>
+
+<div>
+    <h2 class="mt-2 mb-3" style="text-align:center">
+        @AppConst.placeHolder
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        @for (int i = 0; i < _infos.Length; i++) {
+            ElementInfos infos = _infos[i];
+            <HoveringElement Content=@infos.content Title="@infos.title" BackgroundPath=@infos.background></HoveringElement>
+        }
+    </div>
+</div>
+
+
+@code{
+    private ElementInfos[] _infos = new ElementInfos[] { };
+
+    protected override Task OnInitializedAsync() {
+            _infos = new ElementInfos[] {
+                new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
+                new ElementInfos("Femora", AppConst.descriptionFemora, "/femora.png"),
+                new ElementInfos("Katra Ball", AppConst.descriptionKatraBall, "/katra-ball.png"),
+        };
+
+        return base.OnInitializedAsync();
+    }
+}

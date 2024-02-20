@@ -1,7 +1,7 @@
 ﻿@using BlazorApp1.CustomDatas
 @using BlazorBootstrap;
 
-<nav class="navbar navbar-expand-lg h-100 w-100 align-content-center" style="color:@ApplicationConstants.color">
+<nav class="navbar navbar-expand-lg h-100 w-100 align-content-center" style="color:@AppConst.color">
     <ul class="navbar-nav nav-fill w-100">
         @for (int i = 0; i < _infos.Length; i++) {
             int index = i;
@@ -26,9 +26,10 @@
     protected override Task OnInitializedAsync() {
         _infos = new PageInfos[] {
             new PageInfos("", "Home", "bi-house"),
+            new PageInfos("Folio", "Folio", "bi-archive"),
+            new PageInfos("Calculator", "Calculator", "bi-calculator"),
             new PageInfos("Counter", "Counter", "bi-plus"),
-            new PageInfos("FetchData", "Weather", "bi-cloud"),
-            new PageInfos("Calculator", "Calculator", "bi-calculator")
+            new PageInfos("FetchData", "Weather", "bi-cloud")
         };
 
         return base.OnInitializedAsync();
@@ -37,18 +38,18 @@
 
 <style>
     .navbar-nav .nav-item .nav-link{
-        color: @ApplicationConstants.lightColor;
+        color: @AppConst.lightColor;
     }
 
         .navbar-nav .nav-item:focus .nav-link,
         .navbar-nav .nav-item:hover .nav-link{
-            color: @ApplicationConstants.light;
+            color: @AppConst.light;
         }
 
         .navbar-nav .nav-item .nav-link.active{
-            color: @ApplicationConstants.light;
+            color: @AppConst.light;
             font-weight: bold;
-            transition-duration: @(ApplicationConstants.duration);
+            transition-duration: @(AppConst.duration);
             transition-property:font-weight, color;
         }
 </style>
