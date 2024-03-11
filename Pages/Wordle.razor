@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Components.Web;
+@page "/wordle"
+
+<PageTitle>Wordle</PageTitle>
+
+<div class="d-flex m-2 flex-column align-items-center" style="text-align:center">
+    <h1>Wordle</h1>
+    <input class="w-50" type="text" @ref="_keyDownDiv" @onkeydown="Test"></input>
+    <p>@_text</p>
+</div>
+
+@code{
+    private string _text;
+    private ElementReference _keyDownDiv;
+
+    private void Test(KeyboardEventArgs e) {
+        _text += e.Key;
+    }
+
+    protected override Task OnInitializedAsync() {
+        _text = "test > ";
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender){
+
+            await _keyDownDiv.FocusAsync();
+    }
+}

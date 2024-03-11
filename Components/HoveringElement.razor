@@ -1,0 +1,97 @@
+﻿@using BlazorApp1.Datas;
+
+<div class="main-container m-2">
+    <div class="frame">
+        <div class="stacked bg-img" style="background-image:url(@BackgroundPath)"></div>
+        <span class="m-3 stacked" style="font-weight:bold">@Content</span>
+    </div>
+    <p class="m-1">
+        @Title
+    </p>
+</div>
+
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Content { get; set; }
+    [Parameter] public string BackgroundPath { get; set; }
+}
+
+
+<style>
+    .main-container {
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-container p{
+        font-size:large;
+    }
+
+    .frame{
+        display:grid;
+
+        width: 12em;
+        height: 10em;
+
+        border: solid;
+        border-radius: 1em;
+        border-width: 0.2em;
+
+        overflow: hidden;
+
+        transition-duration: @(AppConst.duration);
+        transition-property: width;
+    }
+
+    .stacked {
+        grid-area: 1 / 1;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .bg-img{
+        background-position:center;
+        background-size:cover;
+        z-index: 0;
+
+        transition-duration: @(AppConst.duration);
+        transition-property: filter;
+    }
+
+    .frame span {
+        color: transparent;
+
+        transition-duration: @(AppConst.duration);
+        transition-timing-function: ease-out;
+        transition-property: color;
+    }
+
+    .frame:hover{
+        width: 14em;
+
+        transition-duration: @(AppConst.duration);
+        transition-property: width;
+    }
+
+    .frame:hover span {
+        color: @AppConst.light;
+
+        transition-duration: @(AppConst.duration);
+        transition-timing-function:ease-out;
+        transition-property: color;
+    }
+
+    .frame:hover .bg-img {
+        filter:blur(5px) brightness(0.5);
+
+        transition-duration: @(AppConst.duration);
+        transition-property: filter;
+    }
+</style>

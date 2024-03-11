@@ -1,6 +1,4 @@
-using BlazorApp1.Data;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using BlazorApp1.Datas;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBlazorBootstrap();

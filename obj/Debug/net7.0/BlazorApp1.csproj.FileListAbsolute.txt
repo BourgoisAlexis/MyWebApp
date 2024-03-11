@@ -124,3 +124,40 @@ C:\Users\bourg\Documents\GitHub\MyWebApp\obj\Debug\net7.0\refint\BlazorApp1.dll
 C:\Users\bourg\Documents\GitHub\MyWebApp\obj\Debug\net7.0\BlazorApp1.pdb
 C:\Users\bourg\Documents\GitHub\MyWebApp\obj\Debug\net7.0\BlazorApp1.genruntimeconfig.cache
 C:\Users\bourg\Documents\GitHub\MyWebApp\obj\Debug\net7.0\ref\BlazorApp1.dll
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\appsettings.Development.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\appsettings.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\libman.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\package-lock.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\package.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.staticwebassets.runtime.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.exe
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.deps.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.runtimeconfig.json
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.dll
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorApp1.pdb
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\BlazorBootstrap.dll
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.csproj.AssemblyReference.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.GeneratedMSBuildEditorConfig.editorconfig
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.AssemblyInfoInputs.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.AssemblyInfo.cs
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.csproj.CoreCompileInputs.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.MvcApplicationPartsAssemblyInfo.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.RazorAssemblyInfo.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.RazorAssemblyInfo.cs
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.sourcelink.json
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets.build.json
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets.development.json
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets\msbuild.BlazorApp1.Microsoft.AspNetCore.StaticWebAssets.props
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets\msbuild.build.BlazorApp1.props
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BlazorApp1.props
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BlazorApp1.props
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\staticwebassets.pack.json
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\scopedcss\bundle\BlazorApp1.styles.css
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.csproj.Up2Date
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.dll
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\refint\BlazorApp1.dll
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.pdb
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\BlazorApp1.genruntimeconfig.cache
+Z:\PROJETS PERSOS\MyWebApp\obj\Debug\net7.0\ref\BlazorApp1.dll
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+Z:\PROJETS PERSOS\MyWebApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll

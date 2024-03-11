@@ -1,5 +1,4 @@
-﻿@using BlazorApp1.CustomDatas
-@using BlazorBootstrap;
+﻿@using BlazorApp1.Datas;
 
 <nav class="navbar navbar-expand-lg h-100 w-100 align-content-center" style="color:@AppConst.color">
     <ul class="navbar-nav nav-fill w-100">
@@ -28,28 +27,28 @@
             new PageInfos("", "Home", "bi-house"),
             new PageInfos("Folio", "Folio", "bi-archive"),
             new PageInfos("Calculator", "Calculator", "bi-calculator"),
-            new PageInfos("Counter", "Counter", "bi-plus"),
-            new PageInfos("FetchData", "Weather", "bi-cloud")
-        };
+            new PageInfos("Wordle", "Wordle", "bi-clipboard"),
+            new PageInfos("ToDoList", "ToDoList", "bi-check-square")
+    };
 
         return base.OnInitializedAsync();
     }
 }
 
 <style>
-    .navbar-nav .nav-item .nav-link{
+    .navbar-nav .nav-item .nav-link {
         color: @AppConst.lightColor;
     }
 
-        .navbar-nav .nav-item:focus .nav-link,
-        .navbar-nav .nav-item:hover .nav-link{
-            color: @AppConst.light;
-        }
+    .navbar-nav .nav-item:focus .nav-link,
+    .navbar-nav .nav-item:hover .nav-link {
+        color: @AppConst.light;
+    }
 
-        .navbar-nav .nav-item .nav-link.active{
-            color: @AppConst.light;
-            font-weight: bold;
-            transition-duration: @(AppConst.duration);
-            transition-property:font-weight, color;
-        }
+    .navbar-nav .nav-item .nav-link.active {
+        color: @AppConst.light;
+        font-weight: bold;
+        transition-duration: @(AppConst.duration);
+        transition-property: font-weight, color;
+    }
 </style>

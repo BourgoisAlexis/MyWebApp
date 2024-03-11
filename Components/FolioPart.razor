@@ -1,0 +1,33 @@
+﻿@using BlazorApp1.Datas;
+
+<div>
+    <div class="d-flex mb-3 justify-content-center">
+        <div class="vert"></div>
+    </div>
+
+    <h2 class="mt-2 mb-3" style="text-align:center">
+        @Title
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        @for (int i = 0; i < Infos.Length; i++) {
+            ElementInfos infos = Infos[i];
+            <HoveringElement Content=@infos.content Title="@infos.title" BackgroundPath=@infos.background></HoveringElement>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public ElementInfos[] Infos { get; set; }
+}
+
+
+<style>
+    .vert {
+        background-color: @AppConst.color;
+        width: 0.2em;
+        height: 8em;
+    }
+</style>

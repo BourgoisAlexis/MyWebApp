@@ -1,0 +1,27 @@
+﻿@using BlazorApp1.Datas;
+@using BlazorBootstrap;
+
+<div>
+    <i class=@(Done ? _done : _toDo) @onclick=OnClick></i>
+    <span @onclick=EditText>@Label</span>
+</div>
+
+@code {
+    [Parameter] public bool Done { get; set; } 
+    [Parameter] public string Label { get; set; }
+
+    private string _done = "bi-check-square-fill";
+    private string _toDo = "bi-check-square";
+
+    protected override void OnInitialized() {
+        base.OnInitialized();
+    }
+
+    private void OnClick() {
+        Done = !Done;
+    }
+
+    private void EditText() {
+        
+    }
+}
