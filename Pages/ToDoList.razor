@@ -1,13 +1,57 @@
 ﻿@using Microsoft.AspNetCore.Components.Web;
 @using BlazorApp1.Components;
+@using BlazorApp1.Models;
 @page "/todolist"
 
 <PageTitle>ToDoList</PageTitle>
 
-<div class="d-flex m-2 flex-column align-items-center" style="text-align:center">
-    <ToDoElement Label="test" Done=false></ToDoElement>
+<div class="d-flex justify-content-center">
+    <div class="d-flex m-2 flex-column align-items-start w-25" style="text-align:center">
+        <div class="flex-row">
+            <button class="m-2 btn-primary rounded-2" @onclick=AddItem>Add Item</button>
+            <button class="m-2 btn-primary rounded-2" @onclick=Save>Save</button>
+            <span>@_saved</span>
+            <i class=@($"m-2 {(_saved ? _done : _toDo)}")></i>
+        </div>
+
+        @foreach (ToDoListItem item in _items) {
+            <ToDoElement @ref=_elementREF Item="item" OnChanges=@(() => {_saved = false; StateHasChanged();})></ToDoElement>
+        }
+    </div>
 </div>
 
-@code {
 
+@inject Data.ToDoListDbContext dbContext;
+@code {
+    #region Variables
+    private List<ToDoListItem> _items = new List<ToDoListItem>();
+    private List<ToDoElement> _elements = new List<ToDoElement>();
+    private bool _saved;
+    private ToDoElement _elementREF { set => _elements.Add(value); }
+
+    private const string _done = "bi-check-circle-fill";
+    private const string _toDo = "bi-check-circle";
+    #endregion
+
+    protected override Task OnInitializedAsync() {
+        _items = dbContext.ToDoListItems.ToList();
+        _saved = true;
+
+        return base.OnInitializedAsync();
+    }
+
+    private async Task Save() {
+        foreach (ToDoElement element in _elements)
+            await element.Save();
+
+        await dbContext.SaveChangesAsync();
+        _saved = true;
+    }
+
+    private async void AddItem() {
+        ToDoListItem item = new ToDoListItem(false, "NEW TASK");
+
+        await dbContext.AddAsync(item);
+        _items.Add(item);
+    }
 }

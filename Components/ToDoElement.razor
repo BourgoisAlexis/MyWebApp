@@ -1,27 +1,63 @@
-﻿@using BlazorApp1.Datas;
+﻿@using BlazorApp1.Models;
 @using BlazorBootstrap;
 
-<div>
-    <i class=@(Done ? _done : _toDo) @onclick=OnClick></i>
-    <span @onclick=EditText>@Label</span>
+<div class="m-2">
+    <i class=@($"m-2 {(_editableItem.Status ? _done : _toDo)}") @onclick=Check></i>
+    @if (_editing) {
+        <input class="todotext" type="text" @bind=_editableItem.Label @onkeyup=OnKeyUp/>
+    }
+    else {
+        <span class="todotext" @onclick=EditText>@_editableItem.Label</span>
+    }
 </div>
 
 @code {
-    [Parameter] public bool Done { get; set; } 
-    [Parameter] public string Label { get; set; }
+    #region Variables
+    [Parameter] public ToDoListItem Item { get; set; }
+    [Parameter] public Action OnChanges { get; set; }
 
-    private string _done = "bi-check-square-fill";
-    private string _toDo = "bi-check-square";
+    private ToDoListItem _editableItem;
+    private bool _editing;
+
+    private const string _done = "bi-check-square-fill";
+    private const string _toDo = "bi-check-square";
+    #endregion
 
     protected override void OnInitialized() {
+        _editing = false;
+        _editableItem = new ToDoListItem(Item.Status, Item.Label);
         base.OnInitialized();
     }
 
-    private void OnClick() {
-        Done = !Done;
+    private void Check() {
+        _editableItem.Status = !_editableItem.Status;
+        OnChanges?.Invoke();
     }
 
     private void EditText() {
-        
+        _editing = true;
+    }
+
+    public async Task Save() {
+        Item.Status = _editableItem.Status;
+        Item.Label = _editableItem.Label;
+        await Task.Delay(50);
+    }
+
+    private void OnKeyUp(KeyboardEventArgs eventArgs) {
+        if (eventArgs.Key == "Enter" || eventArgs.Key == "Escape")
+            _editing = false;
+
+        if (Item.Label != _editableItem.Label)
+            OnChanges?.Invoke();
     }
 }
+
+<style>
+    .todotext{
+        width: 15em;
+        height: inherit;
+        display: inline-block;
+        text-align: left;
+    }
+</style>
