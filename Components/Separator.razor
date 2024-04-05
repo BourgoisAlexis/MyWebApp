@@ -1,0 +1,19 @@
+﻿@using BlazorApp1.Models;
+
+<div>
+    <div class="d-flex mb-3 justify-content-center">
+        <div class="verticalSeparation"></div>
+    </div>
+</div>
+
+@code{
+    [Parameter] public bool Vertical {get; set;}
+}
+
+<style>
+    .verticalSeparation {
+        background-color: @AppConst.color;
+        width: @(Vertical ? "0.25em" : "15em");
+        height: @(Vertical ? "8em" : "0.25em");
+    }
+</style>

@@ -1,0 +1,43 @@
+﻿@using BlazorApp1.Models;
+@using SpotifyAPI.Web;
+
+<div class="spotify-container" style="background-image:url(@Track.Album.Images[0].Url)">
+    <div>
+        <span>@Track.Name</span>
+        <span>@Track.Album.Name</span>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public FullTrack Track { get; set; }
+}
+
+
+<style>
+    .spotify-container {
+        overflow: hidden;
+        width: 10rem;
+        height: 10rem;
+        background-position: center;
+        background-size: cover;
+        margin: 1rem;
+        border-radius: 1rem;
+        position: relative;
+    }
+
+        .spotify-container > div {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: 50%;
+            width: 100%;
+            position: absolute;
+            top: 60%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+            .spotify-container > div span {
+                font-weight: bold;
+            }
+</style>

@@ -8,20 +8,36 @@
     Folio
 </h1>
 
-<FolioPart Title=@($"{AppConst.placeHolder} 1") Infos="_infos"></FolioPart>
-<FolioPart Title=@($"{AppConst.placeHolder} 2") Infos="_infos"></FolioPart>
-<FolioPart Title=@($"{AppConst.placeHolder} 3") Infos="_infos"></FolioPart>
+<Separator Vertical=false></Separator>
+<FolioSection Title=@($"About") Text=@AppConst.aboutMe></FolioSection>
+<Separator Vertical=false></Separator>
+<FolioSection Title=@($"Professionnal projects") Infos="_infosProfessionnal"></FolioSection>
+<Separator Vertical=false></Separator>
+<FolioSection Title=@($"Personnal projects") Infos="_infosPersonnal"></FolioSection>
+<Separator Vertical=false></Separator>
+<FolioSection Title=@($"Resume")></FolioSection>
+
+<footer style="text-align:center">
+    Contacts
+</footer>
+
 
 
 @code {
-    private ElementInfos[] _infos = new ElementInfos[] { };
+    private ElementInfos[] _infosPersonnal = new ElementInfos[] { };
+    private ElementInfos[] _infosProfessionnal = new ElementInfos[] { };
 
     protected override Task OnInitializedAsync() {
-        _infos = new ElementInfos[] {
-                new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
-                new ElementInfos("Femora", AppConst.descriptionFemora, "/femora.png"),
-                new ElementInfos("Katra Ball", AppConst.descriptionKatraBall, "/katra-ball.png"),
-    };
+        _infosPersonnal = new ElementInfos[] {
+            new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
+            new ElementInfos("Femora", AppConst.descriptionFemora, "/femora.png"),
+            new ElementInfos("Katra Ball", AppConst.descriptionKatraBall, "/katra-ball.png"),
+            new ElementInfos("Katra Heroes", AppConst.descriptionKatraHeroes, "/katra-ball.png"),
+        };
+
+        _infosProfessionnal = new ElementInfos[] {
+            new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
+        };
 
         return base.OnInitializedAsync();
     }

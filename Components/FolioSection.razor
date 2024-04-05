@@ -1,0 +1,28 @@
+﻿@using BlazorApp1.Models;
+
+<div>
+    <h2 class="mt-2 mb-3" style="text-align:center">
+        @Title
+    </h2>
+
+    <div class="d-flex justify-content-center">
+        @if (!string.IsNullOrEmpty(Text)) {
+            <p style="font-size:large">
+                @Text
+            </p>
+        }
+
+        @if (Infos != null )
+            for (int i = 0; i < Infos.Length; i++) {
+                ElementInfos infos = Infos[i];
+                <HoveringElement Content=@infos.content Title="@infos.title" BackgroundPath=@infos.background></HoveringElement>
+            }
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public ElementInfos[] Infos { get; set; }
+    [Parameter] public string Text { get; set; }
+}

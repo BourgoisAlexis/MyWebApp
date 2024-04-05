@@ -25,10 +25,12 @@
     protected override Task OnInitializedAsync() {
         _infos = new PageInfos[] {
             new PageInfos("", "Home", "bi-house"),
-            new PageInfos("Folio", "Folio", "bi-archive"),
-            new PageInfos("Calculator", "Calculator", "bi-calculator"),
+            //new PageInfos("Calculator", "Calculator", "bi-calculator"),
+            //new PageInfos("Folio", "Folio", "bi-archive"),
+            new PageInfos("Spotify", "Spotify", "bi-speaker"),
+            new PageInfos("Test", "Test", "bi-backpack"),
+            //new PageInfos("ToDoList", "ToDoList", "bi-check-square"),
             new PageInfos("Wordle", "Wordle", "bi-clipboard"),
-            new PageInfos("ToDoList", "ToDoList", "bi-check-square")
     };
 
         return base.OnInitializedAsync();
@@ -37,7 +39,7 @@
 
 <style>
     .navbar-nav .nav-item .nav-link {
-        color: @AppConst.lightColor;
+        color: @AppConst.colorTint;
     }
 
     .navbar-nav .nav-item:focus .nav-link,

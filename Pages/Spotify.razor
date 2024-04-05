@@ -1,0 +1,132 @@
+﻿@using Microsoft.AspNetCore.Components.Web;
+@using SpotifyAPI.Web;
+@using Models;
+@using BlazorApp1.Components;
+@using Newtonsoft.Json;
+@page "/spotify"
+
+<PageTitle>Spotify</PageTitle>
+
+<div class="d-flex flex-column align-content-center align-items-center">
+    <h1 class="m-3">Spotify</h1>
+    <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
+        <span class="@_icon"></span>
+        <span>@_title</span>
+    </div>
+    <div class="progress" style="width:25rem; height:0.5rem; background-color:@(AppConst.light)">
+        <div class="progress-bar" style="width:@(GetTrackerPosition())%; background-color:@(AppConst.color)" role="progressbar" aria-valuenow="@(GetTrackerPosition())" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    @if (context != null) {
+        <SpotifyTrack Track=@(context.Item as FullTrack)></SpotifyTrack>
+    }
+</div>
+
+
+@inject IJSRuntime jsRuntime
+@inject NavigationManager navigationManager
+@code {
+    #region Variables
+    private bool _connected = false;
+
+    private bool _playing => context != null ? context.IsPlaying : false;
+    private string _icon => _playing ? "bi-pause" : "bi-play";
+    private string _title => _playing ? (context.Item as FullTrack).Name : "none";
+
+    private SpotifyModel model => AppConst.SpotifyModel;
+    private CurrentlyPlayingContext context => model.currentlyPlayingContext;
+    #endregion
+
+
+    protected override async void OnAfterRender(bool firstRender) {
+        if (firstRender) {
+            if (string.IsNullOrEmpty(model.code)) {
+                UriBuilder b = new UriBuilder(navigationManager.Uri);
+                var q = System.Web.HttpUtility.ParseQueryString(b.Query);
+                string result = q["code"];
+
+                if (!string.IsNullOrEmpty(result))
+                    model.code = result;
+            }
+
+            _connected = !string.IsNullOrEmpty(model.code);
+
+            if (!_connected)
+                Auth();
+            else {
+                if (model.spotifyClient == null)
+                    await Client(model.code);
+
+                await GetPlayer();
+                StateHasChanged();
+                Polling();
+            }
+        }
+
+        base.OnAfterRender(firstRender);
+    }
+
+    private void Auth() {
+        (AppConst.SpotifyModel.verifier, AppConst.SpotifyModel.challenge) = PKCEUtil.GenerateCodes();
+        var loginRequest = new LoginRequest(
+            new Uri(model.redirect_uri),
+            model.client_id,
+            LoginRequest.ResponseType.Code
+            ) {
+                CodeChallengeMethod = "S256",
+                CodeChallenge = model.challenge,
+                Scope = new[] {
+                    Scopes.UserReadCurrentlyPlaying,
+                    Scopes.UserReadPlaybackState,
+                    Scopes.UserReadPlaybackPosition
+                }
+            };
+
+        var uri = loginRequest.ToUri();
+        Redirect(uri.ToString());
+    }
+
+    private void Redirect(string uri) {
+        if (string.IsNullOrEmpty(uri))
+            return;
+
+        jsRuntime.InvokeVoidAsync("open", uri, "_self");
+    }
+
+    private async Task Client(string code) {
+        model.oAut = new OAuthClient();
+        PKCETokenResponse resp = await model.oAut.RequestToken(
+            new PKCETokenRequest(model.client_id, code, new Uri(model.redirect_uri), model.verifier)
+        );
+
+        model.spotifyClient = new SpotifyClient(resp);
+    }
+
+    private async Task GetPlayer() {
+        model.currentlyPlayingContext = await model.spotifyClient.Player.GetCurrentPlayback();
+    }
+
+    private int GetTrackerPosition() {
+        if (context == null)
+            return 0;
+
+        int duration = (context.Item as FullTrack).DurationMs;
+        int progress = context.ProgressMs;
+        int result = (int)Math.Floor(((float)progress / (float)duration) * 100);
+
+        Console.WriteLine(result);
+
+        return result;
+    }
+
+    private async void Polling() {
+        for (int i = 0; i < 5; i++) {
+            await Task.Delay(1000);
+            if (_playing)
+                context.ProgressMs += 1000;
+
+            StateHasChanged();
+        }
+        await GetPlayer();
+        Polling();
+    }
+}

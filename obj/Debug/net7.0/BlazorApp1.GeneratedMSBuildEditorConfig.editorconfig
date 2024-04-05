@@ -22,12 +22,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/PROJETS PERSOS/MyWebApp/Components/FolioPart.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGb2xpb1BhcnQucmF6b3I=
+[Z:/PROJETS PERSOS/MyWebApp/Components/FolioSection.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xGb2xpb1NlY3Rpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/PROJETS PERSOS/MyWebApp/Components/HoveringElement.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xIb3ZlcmluZ0VsZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/PROJETS PERSOS/MyWebApp/Components/Separator.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTZXBhcmF0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/PROJETS PERSOS/MyWebApp/Components/SpotifyTrack.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcG90aWZ5VHJhY2sucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/PROJETS PERSOS/MyWebApp/Components/ToDoElement.razor]
@@ -38,16 +46,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsY3VsYXRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/PROJETS PERSOS/MyWebApp/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [Z:/PROJETS PERSOS/MyWebApp/Pages/Folio.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9saW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/PROJETS PERSOS/MyWebApp/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/PROJETS PERSOS/MyWebApp/Pages/Spotify.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3BvdGlmeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[Z:/PROJETS PERSOS/MyWebApp/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/PROJETS PERSOS/MyWebApp/Pages/ToDoList.razor]
