@@ -34,8 +34,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTZXBhcmF0b3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/PROJETS PERSOS/MyWebApp/Components/SpotifyTrack.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcG90aWZ5VHJhY2sucmF6b3I=
+[Z:/PROJETS PERSOS/MyWebApp/Components/SpotifyElement.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTcG90aWZ5RWxlbWVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/PROJETS PERSOS/MyWebApp/Components/ToDoElement.razor]
