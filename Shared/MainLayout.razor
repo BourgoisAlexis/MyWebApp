@@ -1,4 +1,5 @@
 ﻿@using BlazorApp1.Models;
+@using BlazorApp1.Components;
 @inherits LayoutComponentBase
 
 <PageTitle>MyApp</PageTitle>
@@ -7,21 +8,24 @@
     <div class="topbar w-100 sticky-top">
         <NavMenu />
     </div>
+
     <div class="m-3">
         @Body
     </div>
 </div>
 
 <style>
+    @@import url(https://fonts.googleapis.com/css2?family=Ubuntu);
+
     .page {
-        font-family: Roboto;
-        background-color: @AppConst.dark;
-        color: @AppConst.light;
+        font-family: "Ubuntu";
+        background-color: @AppModel.dark;
+        color: @AppModel.light;
     }
 
     .topbar {
         height: 4rem;
-        background-color: @AppConst.color;
+        background-color: @AppModel.color;
     }
 
     .duration-1 {

@@ -10,7 +10,7 @@ namespace BlazorApp1.Data {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DbConnectionString"));
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DbConnectionStringToDo"));
         }
 
         public DbSet<ToDoListItem> ToDoListItems { get; set; }

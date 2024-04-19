@@ -10,35 +10,40 @@
 <div class="d-flex flex-column align-content-center align-items-center">
     <h1 class="m-3">Spotify</h1>
 
-    <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-        @foreach (string[] tags in _tags) {
-            <button class="btn-spotify btn-primary" @onclick="() => SearchTags(tags)">@tags[0]</button>
-        }
-    </div>
-
-    <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-        @foreach (string artist in _artists) {
-            <button class="btn-spotify btn-danger" @onclick="() => SearchArtist(artist)">@artist</button>
-        }
-    </div>
-
-    <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-        <span class="@_icon"></span>
-        <span>@_title</span>
-    </div>
-
-    <div class="progress" style="width:25rem; height:0.5rem; background-color:@(AppConst.light)">
-        <div class="progress-bar" style="width:@(GetTrackerPosition())%; background-color:@(AppConst.color)" role="progressbar" aria-valuenow="@(GetTrackerPosition())" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-
-
-    @if (context != null) {
-        FullTrack track = context.Item as FullTrack;
-        <SpotifyElement MainTitle=@track.Name SubTitle=@track.Album.Name ImageURL=@track.Album.Images[0].Url></SpotifyElement>
+    @if (AppModel.loading) {
+        <LoadingSpinner></LoadingSpinner>
     }
+    else {
+        <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
+            @foreach (string[] tags in _tags) {
+                <button class="btn-spotify btn-primary" @onclick="() => SearchTags(tags)">@tags[0]</button>
+            }
+        </div>
 
-    @if (_playlist != null) {
-        <SpotifyElement MainTitle=@_playlist.Name ImageURL=@_playlist.Images[0].Url></SpotifyElement>
+        <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
+            @foreach (string artist in _artists) {
+                <button class="btn-spotify btn-danger" @onclick="() => SearchArtist(artist)">@artist</button>
+            }
+        </div>
+
+        <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
+            <span class="@_icon"></span>
+            <span>@_title</span>
+        </div>
+
+        <div class="progress" style="width:25rem; height:0.5rem; background-color:@(AppModel.light)">
+            <div class="progress-bar" style="width:@(GetTrackerPosition())%; background-color:@(AppModel.color)" role="progressbar" aria-valuenow="@(GetTrackerPosition())" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+
+        @if (context != null) {
+            FullTrack track = context.Item as FullTrack;
+            <SpotifyElement MainTitle=@track.Name SubTitle=@track.Album.Name ImageURL=@track.Album.Images[0].Url></SpotifyElement>
+        }
+
+        @if (_playlist != null) {
+            <SpotifyElement MainTitle=@_playlist.Name ImageURL=@_playlist.Images[0].Url></SpotifyElement>
+        }
     }
 </div>
 
@@ -55,7 +60,7 @@
 
     private FullPlaylist _playlist = null;
 
-    private SpotifyModel model => AppConst.SpotifyModel;
+    private SpotifyModel model => AppModel.SpotifyModel;
     private CurrentlyPlayingContext context => model.currentlyPlayingContext;
 
     private List<string[]> _tags = new List<string[]> {
@@ -86,8 +91,9 @@
 
             _connected = !string.IsNullOrEmpty(model.code);
 
-            if (!_connected)
+            if (!_connected) {
                 Auth();
+            }
             else {
                 if (model.spotifyClient == null)
                     await Client(model.code);
@@ -98,11 +104,13 @@
             }
         }
 
+        AppModel.loading = false;
+
         base.OnAfterRender(firstRender);
     }
 
     private void Auth() {
-        (AppConst.SpotifyModel.verifier, AppConst.SpotifyModel.challenge) = PKCEUtil.GenerateCodes();
+        (AppModel.SpotifyModel.verifier, AppModel.SpotifyModel.challenge) = PKCEUtil.GenerateCodes();
         var loginRequest = new LoginRequest(
             new Uri(model.redirect_uri),
             model.client_id,

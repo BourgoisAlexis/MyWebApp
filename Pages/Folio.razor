@@ -9,7 +9,7 @@
 </h1>
 
 <Separator Vertical=false></Separator>
-<FolioSection Title=@($"About") Text=@AppConst.aboutMe></FolioSection>
+<FolioSection Title=@($"About") Text=@AppModel.aboutMe></FolioSection>
 <Separator Vertical=false></Separator>
 <FolioSection Title=@($"Professionnal projects") Infos="_infosProfessionnal"></FolioSection>
 <Separator Vertical=false></Separator>
@@ -29,14 +29,14 @@
 
     protected override Task OnInitializedAsync() {
         _infosPersonnal = new ElementInfos[] {
-            new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
-            new ElementInfos("Femora", AppConst.descriptionFemora, "/femora.png"),
-            new ElementInfos("Katra Ball", AppConst.descriptionKatraBall, "/katra-ball.png"),
-            new ElementInfos("Katra Heroes", AppConst.descriptionKatraHeroes, "/katra-ball.png"),
+            new ElementInfos("Versus Punch", AppModel.descriptionVersusPunch, "/versus-punch.png"),
+            new ElementInfos("Femora", AppModel.descriptionFemora, "/femora.png"),
+            new ElementInfos("Katra Ball", AppModel.descriptionKatraBall, "/katra-ball.png"),
+            new ElementInfos("Katra Heroes", AppModel.descriptionKatraHeroes, "/katra-ball.png"),
         };
 
         _infosProfessionnal = new ElementInfos[] {
-            new ElementInfos("Versus Punch", AppConst.descriptionVersusPunch, "/versus-punch.png"),
+            new ElementInfos("Versus Punch", AppModel.descriptionVersusPunch, "/versus-punch.png"),
         };
 
         return base.OnInitializedAsync();
