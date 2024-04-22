@@ -8,42 +8,46 @@
 <PageTitle>Spotify</PageTitle>
 
 <div class="d-flex flex-column align-content-center align-items-center">
-    <h1 class="m-3">Spotify</h1>
-
     @if (AppModel.loading) {
         <LoadingSpinner></LoadingSpinner>
     }
     else {
         <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-            @foreach (string[] tags in _tags) {
-                <button class="btn-spotify btn-primary" @onclick="() => SearchTags(tags)">@tags[0]</button>
+            @foreach (SpotifyMoodModel mood in _moods) {
+                <div class="btn-spotify" @onclick="() => SearchMood(mood)">
+                    <span class="m-2 @mood.icon"></span>
+                    <span class="m-2">@mood.id</span>
+                </div>
             }
         </div>
 
-        <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-            @foreach (string artist in _artists) {
-                <button class="btn-spotify btn-danger" @onclick="() => SearchArtist(artist)">@artist</button>
+        <div class="container-disc">
+            @if (context != null) {
+                FullTrack track = context.Item as FullTrack;
+                <img class="disc" src="@track.Album.Images[0].Url" />
             }
         </div>
 
-        <div class="m-3 d-flex flex-row align-content-center align-items-center justify-content-center">
-            <span class="@_icon"></span>
-            <span>@_title</span>
+        <div class="footer-spotify">
+            <div class="progress">
+                <div class="progress-bar" style="width:@(GetTrackerPosition())%" role="progressbar" aria-valuenow="@(GetTrackerPosition())" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <div class="content">
+                @if (context != null) {
+                    FullTrack track = context.Item as FullTrack;
+
+                    <div class="icon">
+                        <span class="@_icon"></span>
+                    </div>
+                    <div class="player">
+                        <span>@track.Name</span>
+                        <span>@track.Artists[0].Name</span>
+                        <span>@track.Album.Name</span>
+                    </div>
+                }
+            </div>
         </div>
-
-        <div class="progress" style="width:25rem; height:0.5rem; background-color:@(AppModel.light)">
-            <div class="progress-bar" style="width:@(GetTrackerPosition())%; background-color:@(AppModel.color)" role="progressbar" aria-valuenow="@(GetTrackerPosition())" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-
-
-        @if (context != null) {
-            FullTrack track = context.Item as FullTrack;
-            <SpotifyElement MainTitle=@track.Name SubTitle=@track.Album.Name ImageURL=@track.Album.Images[0].Url></SpotifyElement>
-        }
-
-        @if (_playlist != null) {
-            <SpotifyElement MainTitle=@_playlist.Name ImageURL=@_playlist.Images[0].Url></SpotifyElement>
-        }
     }
 </div>
 
@@ -56,27 +60,38 @@
 
     private bool _playing => context != null ? context.IsPlaying : false;
     private string _icon => _playing ? "bi-pause" : "bi-play";
-    private string _title => _playing ? (context.Item as FullTrack).Name : "none";
-
-    private FullPlaylist _playlist = null;
 
     private SpotifyModel model => AppModel.SpotifyModel;
     private CurrentlyPlayingContext context => model.currentlyPlayingContext;
 
-    private List<string[]> _tags = new List<string[]> {
-        new string[]{ "breackcore", "chill"},
-        new string[]{ "vagabond", "chill"},
-        new string[]{ "chillhop", "chill"},
-        new string[]{ "futurefunk", "nu disco"},
-    };
-
-    private List<string> _artists = new List<string>() {
-        "sewerslvt",
-        "nujabes",
-        "ariana grande",
-    };
+    private List<SpotifyMoodModel> _moods = new List<SpotifyMoodModel>();
     #endregion
 
+
+    protected override Task OnInitializedAsync() {
+        _moods.Clear();
+        _moods.Add(new SpotifyMoodModel("Full focus", "bi-book",
+            new List<string[]> { new string[] { "breackcore", "chill" }, new string[] { "vagabond", "chill" }, new string[] { "chillhop", "chill" }, },
+            new string[] { "chillhop" },
+            new string[] { "Nujabes", "68+1" }));
+
+        _moods.Add(new SpotifyMoodModel("Ça game", "bi-controller",
+            new List<string[]> { new string[] { "breackcore", "chill" }, new string[] { "chillhop", "chill" }, new string[] { "anime" } },
+            new string[] { "anime" },
+            new string[] { "Doja_Cat", "Ariana_Grande", "League_of_Legends", "Ado" }));
+
+        _moods.Add(new SpotifyMoodModel("Ça bouge", "bi-boombox",
+            new List<string[]> { new string[] { "funk", "old" } },
+            new string[] { "funk", "nudisco", "futurefunk", "house" },
+            new string[] { "Macross_82-99" }));
+
+        _moods.Add(new SpotifyMoodModel("Random", "bi-shuffle",
+            new List<string[]> { new string[] { "chill" } },
+            new string[] { "funk", "rock", "rap", "anime", "pop", "disco" },
+            new string[] { "Nujabes" }));
+
+        return base.OnInitializedAsync();
+    }
 
     protected override async void OnAfterRender(bool firstRender) {
         if (firstRender) {
@@ -149,16 +164,44 @@
         model.currentlyPlayingContext = await model.spotifyClient.Player.GetCurrentPlayback();
     }
 
-    private async void SearchGenre(string genre) {
-        SearchPlaylist($"genre:{genre}");
+    private void SearchMood(SpotifyMoodModel mood) {
+        int sum = mood.tags.Count + mood.genres.Length + mood.artists.Length;
+        Random r = new Random();
+        int random = r.Next(0, sum);
+
+        Console.WriteLine($"random:{random} / sum:{sum}");
+
+        int start = 0;
+        int max = mood.tags.Count;
+        if (random < max) {
+            SearchTags(mood.tags[random]);
+            return;
+        }
+        start += mood.tags.Count;
+        max += mood.genres.Length;
+        if (random < max) {
+            SearchGenre(mood.genres[random - start]);
+            return;
+        }
+        start += mood.genres.Length;
+        max += mood.artists.Length;
+        if (random < max) {
+            SearchArtist(mood.artists[random - start]);
+            return;
+        }
     }
 
-    private async void SearchTags(string[] tags) {
+    private void SearchTags(string[] tags) {
         string query = string.Empty;
-        foreach (string tag in tags)
-            query += $"{tag} ";
+        for (int i = 0; i < tags.Length; i++) {
+            query += $"{(i > 0 ? "_" : "")}{tags[i]}";
+        }
 
         SearchPlaylist(query);
+    }
+
+    private void SearchGenre(string genre) {
+        SearchPlaylist($"genre:{genre}");
     }
 
     private async void SearchArtist(string artist) {
@@ -168,43 +211,31 @@
         req.Limit = 5;
         SearchResponse resp = await model.spotifyClient.Search.Item(req);
 
-        Console.WriteLine(query);
-
-        if (resp.Artists.Items != null && resp.Artists.Items.Count > 0) {
-            foreach (FullArtist art in resp.Artists.Items)
-                Console.WriteLine(art.Name);
-
+        if (resp.Artists.Items != null && resp.Artists.Items.Count > 0)
             Play(resp.Artists.Items[0].Uri);
-        }
     }
 
     private async void SearchPlaylist(string query) {
+        FullPlaylist playlist = null;
         SearchRequest req = new SearchRequest(SearchRequest.Types.Playlist, query);
-        req.Limit = 5;
+        req.Limit = 10;
         SearchResponse resp = await model.spotifyClient.Search.Item(req);
 
         Console.WriteLine(query);
 
         if (resp.Playlists.Items != null && resp.Playlists.Items.Count > 0) {
-            foreach (FullPlaylist playlist in resp.Playlists.Items)
-                Console.WriteLine(playlist.Name);
-
             Random r = new Random();
-            _playlist = resp.Playlists.Items[r.Next(0, resp.Playlists.Items.Count - 1)];
+            playlist = resp.Playlists.Items[r.Next(0, resp.Playlists.Items.Count - 1)];
         }
 
-        if (_playlist != null)
-            Play(_playlist.Uri);
+        if (playlist != null)
+            Play(playlist.Uri);
     }
 
     private async void Play(string uri) {
         PlayerResumePlaybackRequest req = new PlayerResumePlaybackRequest();
         req.ContextUri = uri;
         await model.spotifyClient.Player.ResumePlayback(req);
-
-        await GetPlayer();
-
-        StateHasChanged();
     }
 
     private int GetTrackerPosition() {
@@ -232,10 +263,118 @@
 }
 
 <style>
+    .container-disc {
+        position: absolute;
+        top: 10rem;
+        bottom: 8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .container-disc .disc {
+            height: 70%;
+            border-radius: 100%;
+            border-style: solid;
+            border-width: 0.2rem;
+            border-color: @AppModel.colorTint;
+            animation: spin 10s linear infinite;
+        }
+
     .btn-spotify {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         margin: 0.5rem;
         border-radius: 0.5rem;
         width: 8rem;
         height: 3rem;
+        background-color: @AppModel.color;
+        color: @AppModel.light;
+        transition-duration: 100ms;
+        transition-property: background-color;
+    }
+
+        .btn-spotify:hover {
+            background-color: @AppModel.colorTint;
+            transition-duration: 100ms;
+            transition-property: background-color;
+        }
+
+    .footer-spotify {
+        position: absolute;
+        width: 80%;
+        height: 6rem;
+        bottom: 1rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        overflow: clip;
+        border-radius: 0.5rem;
+    }
+
+        .footer-spotify .content {
+            position: relative;
+            bottom: 0;
+            height: 95%;
+        }
+
+            .footer-spotify .content .player {
+                position: absolute;
+                width: 80%;
+                left: 10%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .footer-spotify .content .player span {
+                    margin: 0 2rem;
+                }
+
+            .footer-spotify .content .icon {
+                height: 70%;
+                width: 10%;
+                border-radius: 1rem;
+                border-style: solid;
+                border-width: 0.2rem;
+                border-color: @AppModel.colorTint;
+                position: absolute;
+                left: 2rem;
+                top: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .footer-spotify .content .icon span {
+                    font-size: 2rem;
+                }
+
+        .footer-spotify .progress {
+            top: 0;
+            width: 100%;
+            height: 5%;
+            border-radius: 0;
+            background-color: @AppModel.colorTint;
+        }
+
+            .footer-spotify .progress .progress-bar {
+                background-color: @AppModel.color;
+            }
+
+    @@keyframes spin {
+        0% {
+            transform: rotateZ(0deg);
+        }
+
+        50% {
+            transform: rotateZ(360deg);
+        }
+
+        100% {
+            transform: rotateZ(720deg);
+        }
     }
 </style>

@@ -13,4 +13,20 @@ namespace BlazorApp1.Models {
 
         public CurrentlyPlayingContext currentlyPlayingContext = null;
     }
+
+    public class SpotifyMoodModel {
+        public string id;
+        public string icon;
+        public List<string[]> tags;
+        public string[] genres;
+        public string[] artists;
+
+        public SpotifyMoodModel(string id, string icon, List<string[]> tags, string[] genres, string[] artists) {
+            this.id = id;
+            this.icon = icon;
+            this.tags = tags;
+            this.genres = genres;
+            this.artists = artists;
+        }
+    }
 }
