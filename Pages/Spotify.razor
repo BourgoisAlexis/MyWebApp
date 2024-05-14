@@ -8,7 +8,7 @@
 <PageTitle>Spotify</PageTitle>
 
 <div class="d-flex flex-column align-content-center align-items-center">
-    @if (AppModel.loading) {
+    @if (AppConst.loading) {
         <LoadingSpinner></LoadingSpinner>
     }
     else {
@@ -37,13 +37,15 @@
                 @if (context != null) {
                     FullTrack track = context.Item as FullTrack;
 
-                    <div class="icon">
+                    <button class="icon" style="left: 2rem">
                         <span class="@_icon"></span>
-                    </div>
+                    </button>
+                    <button class="icon" style="right: 2rem" @onclick=Skip>
+                        <span class="bi-skip-end"></span>
+                    </button>
                     <div class="player">
-                        <span>@track.Name</span>
+                        <span style="font-weight:bold">@track.Name</span>
                         <span>@track.Artists[0].Name</span>
-                        <span>@track.Album.Name</span>
                     </div>
                 }
             </div>
@@ -61,7 +63,7 @@
     private bool _playing => context != null ? context.IsPlaying : false;
     private string _icon => _playing ? "bi-pause" : "bi-play";
 
-    private SpotifyModel model => AppModel.SpotifyModel;
+    private SpotifyModel model => AppConst.SpotifyModel;
     private CurrentlyPlayingContext context => model.currentlyPlayingContext;
 
     private List<SpotifyMoodModel> _moods = new List<SpotifyMoodModel>();
@@ -119,13 +121,13 @@
             }
         }
 
-        AppModel.loading = false;
+        AppConst.loading = false;
 
         base.OnAfterRender(firstRender);
     }
 
     private void Auth() {
-        (AppModel.SpotifyModel.verifier, AppModel.SpotifyModel.challenge) = PKCEUtil.GenerateCodes();
+        (AppConst.SpotifyModel.verifier, AppConst.SpotifyModel.challenge) = PKCEUtil.GenerateCodes();
         var loginRequest = new LoginRequest(
             new Uri(model.redirect_uri),
             model.client_id,
@@ -260,6 +262,10 @@
         await GetPlayer();
         Polling();
     }
+
+    private void Skip() {
+        Console.WriteLine("skip");
+    }
 }
 
 <style>
@@ -273,11 +279,11 @@
     }
 
         .container-disc .disc {
-            height: 70%;
+            height: 80%;
             border-radius: 100%;
             border-style: solid;
             border-width: 0.2rem;
-            border-color: @AppModel.colorTint;
+            border-color: @AppConst.colorTint;
             animation: spin 10s linear infinite;
         }
 
@@ -290,16 +296,22 @@
         border-radius: 0.5rem;
         width: 8rem;
         height: 3rem;
-        background-color: @AppModel.color;
-        color: @AppModel.light;
-        transition-duration: 100ms;
-        transition-property: background-color;
+        cursor: pointer;
+        background-color: @AppConst.colorTint;
+        color: @AppConst.light;
+        transition-duration: @AppConst.duration;
+        transition-property: background-color, color;
     }
 
         .btn-spotify:hover {
-            background-color: @AppModel.colorTint;
-            transition-duration: 100ms;
-            transition-property: background-color;
+            color: @AppConst.dark;
+            background-color: @AppConst.light;
+            transition-duration: @AppConst.duration;
+            transition-property: background-color, color;
+        }
+
+        .btn-spotify span {
+            cursor: inherit;
         }
 
     .footer-spotify {
@@ -334,22 +346,33 @@
                 }
 
             .footer-spotify .content .icon {
-                height: 70%;
-                width: 10%;
+                height: 4rem;
+                width: 4rem;
                 border-radius: 1rem;
                 border-style: solid;
                 border-width: 0.2rem;
-                border-color: @AppModel.colorTint;
+                border-color: @AppConst.colorTint;
                 position: absolute;
-                left: 2rem;
                 top: 15%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                background-color: transparent;
+                transition-duration: @AppConst.duration;
+                transition-property: background-color;
             }
+
+                .footer-spotify .content .icon:hover {
+                    background-color: @AppConst.colorTint;
+                    transition-duration: @AppConst.duration;
+                    transition-property: background-color;
+                }
 
                 .footer-spotify .content .icon span {
                     font-size: 2rem;
+                    font-weight: bold;
+                    color: white;
+                    color: @AppConst.light;
                 }
 
         .footer-spotify .progress {
@@ -357,11 +380,11 @@
             width: 100%;
             height: 5%;
             border-radius: 0;
-            background-color: @AppModel.colorTint;
+            background-color: @AppConst.colorSuperTone;
         }
 
             .footer-spotify .progress .progress-bar {
-                background-color: @AppModel.color;
+                background-color: @AppConst.colorTint;
             }
 
     @@keyframes spin {

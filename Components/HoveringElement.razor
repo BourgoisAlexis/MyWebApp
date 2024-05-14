@@ -43,7 +43,7 @@
 
         overflow: hidden;
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-property: width;
     }
 
@@ -61,14 +61,14 @@
         background-size:cover;
         z-index: 0;
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-property: filter;
     }
 
     .frame span {
         color: transparent;
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-timing-function: ease-out;
         transition-property: color;
     }
@@ -76,14 +76,14 @@
     .frame:hover{
         width: 14em;
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-property: width;
     }
 
     .frame:hover span {
-        color: @AppModel.light;
+        color: @AppConst.light;
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-timing-function:ease-out;
         transition-property: color;
     }
@@ -91,7 +91,7 @@
     .frame:hover .bg-img {
         filter:blur(5px) brightness(0.5);
 
-        transition-duration: @(AppModel.duration);
+        transition-duration: @(AppConst.duration);
         transition-property: filter;
     }
 </style>

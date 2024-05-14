@@ -1,12 +1,18 @@
 ﻿namespace BlazorApp1.Models {
-    public static class AppModel {
-        public static string light = "#eeeeee";
+    public static class AppConst {
+        //Colors
+        public static string light = "#FFFBF5";
 
-        public static string dark = "#393939";
+        public static string dark = "#2C1F20";
 
-        public static string color = "#255fe3";
-        public static string colorTint = "#aabbe3";
+        public static string color = "#FD4556";
+        public static string colorTint = "#FD7884";
+        public static string colorShade = "#C93744";
+        public static string colorTone = "#CD5f69";
 
+        public static string colorSuperTone = "#7F6265";
+
+        //Animation
         public static string duration = "350ms";
 
         public static string descriptionVersusPunch = "Versus punch is a game jam game created in 2019 with some friends of mine";
