@@ -1,0 +1,75 @@
+﻿@using BlazorApp1.Models
+@using BlazorApp1.Components;
+@using Newtonsoft.Json;
+@page "/riotgames"
+
+<PageTitle>Test</PageTitle>
+
+<div class="d-flex flex-column align-content-center align-items-center">
+    @if (AppConst.loading) {
+        <LoadingSpinner></LoadingSpinner>
+    }
+    else {
+        <span>@_waiting</span>
+        <button @onclick=Fetch>Fetch</button>
+        @if (_lines != null)
+            foreach (string l in _lines) {
+                <span>@l</span>
+            }
+    }
+</div>
+
+
+@code {
+    private RiotGamesModel _model;
+    private string[] _lines;
+    private int _count = 20;
+    private int _waitingInSeconds = 30;
+    private int _waiting = 0;
+
+    protected override async Task OnInitializedAsync() {
+        _model = new RiotGamesModel();
+        _model.Setup();
+
+        AppConst.loading = false;
+    }
+
+    private async void Fetch() {
+        AppConst.loading = true;
+        StateHasChanged();
+
+        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "RiotGamesDatas.json");
+        string jsonContent = await File.ReadAllTextAsync(path);
+
+        StoredDatas datas = JsonConvert.DeserializeObject<StoredDatas>(jsonContent);
+
+        string queryResult = await _model.Execute(datas.lastFetchedIndex, _count);
+        _lines = queryResult.Split(';');
+
+        if (_lines.Length <= 1) {
+            AppConst.loading = false;
+            StateHasChanged();
+            return;
+        }
+
+        datas.lastFetchedIndex += _lines.Length;
+        datas.lines.AddRange(_lines);
+
+        string json = JsonConvert.SerializeObject(datas, Newtonsoft.Json.Formatting.Indented);
+        await File.WriteAllTextAsync(path, json);
+
+        AppConst.loading = false;
+        StateHasChanged();
+
+        if (datas.lastFetchedIndex >= 1000)
+            return;
+
+        for (int i = 0; i < _waitingInSeconds; i++) {
+            _waiting = _waitingInSeconds - i;
+            await Task.Delay(1000);
+            StateHasChanged();
+        }
+
+        Fetch();
+    }
+}

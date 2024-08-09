@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KcuifAC84qQcnHhus4Fbp3s0p4zsD1TMHo0bjxq6PDg=",
+  "Hash": "WCLko52KvMS8q0L1LUF4CkzKSfriHu+vHyNFGB5Q6Vw=",
   "Source": "BlazorApp1",
   "BasePath": "_content/BlazorApp1",
   "Mode": "Default",
@@ -24677,6 +24677,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\katra-ball.png"
+    },
+    {
+      "Identity": "Z:\\PROJETS PERSOS\\MyWebApp\\wwwroot\\RiotGamesDatas.json",
+      "SourceId": "BlazorApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "Z:\\PROJETS PERSOS\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/BlazorApp1",
+      "RelativePath": "RiotGamesDatas.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\RiotGamesDatas.json"
     },
     {
       "Identity": "Z:\\PROJETS PERSOS\\MyWebApp\\wwwroot\\versus-punch.png",
